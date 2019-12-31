@@ -1,0 +1,6 @@
+{
+    "origin": "Tokyo",
+    "destination": "Shanghai",
+    "duration": 185,
+    "passengers": ["Alice", "Bob"]
+}

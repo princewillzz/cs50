@@ -1,0 +1,12 @@
+{
+    "origin": {
+        "city": "Tokyo",
+        "code": "HND"
+    },
+    "destination": {
+        "city": "Shanghai",
+        "code": "PVG"
+    },
+    "duration": 185,
+    "passengers": ["Alice", "Bob"]
+}

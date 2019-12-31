@@ -1,0 +1,52 @@
+
+INSERT INTO flight (origin, destination, duration) 
+    VALUES ('New York', 'Paris', 540) -->
+flight = Flight(origin="New York", destination="Paris", duration=540)
+db.session.add(flight) 
+
+SELECT * FROM flights -->
+Flight.query.all()
+
+SELECT * FROM flight WHERE origin = 'Paris' -->
+Flight.query.filter_by(origin="Paris").all()
+
+SELECT COUNT(*) FROM flights WHERE origin='Paris -->
+Flight.query.filter_by(origin="Paris").count()
+
+SELECT * FROM fligts WHERE id=20 -->
+Flight.query.get(20)
+
+UPDATE flights SET duratio = 280 WHERE id = 39 -->
+flight = Flight.query.get(39)
+flight.duration = 280
+
+DELETE FROM flights WHERE id = 9 -->
+flight = Flights.query.get(9)
+db.session.delete(flight)
+
+commit --> db.session.commit()
+
+SELECT * FROM flights ORDER BY origin -->
+Flights.query.order_by(flight.origin).all()
+
+SELECT * FROM flights ORDER BY origin DESC -->
+Flight.query.order_by(Flight.origin.desc()).all()
+
+SELECT * FROM flights WHERE origin != 'Paris' -->
+Flight.query.filter(Flight.origin != "Paris").all()
+
+SELECT * FROM flights WHERE origin LIKE "%a%" -->
+Flight.query.filter(Flight.origin.like("%a%")).all()
+
+SELECT * FROM flights WHERE origin IN ('Tokyo', 'Paris') -->
+Flight.query.filter(Flight.origin.in_(["Tokyo", "Paris"])).all()
+
+SELECT * FROM fligthts WHERE origin = 'Paris' AND duration > 500 -->
+Flight.query.filter(and_(Flight.origin == "Paris", Flight.duration > 500)).all()
+
+SELECT * FROM fligthts WHERE origin = 'Paris' OR duration > 500 -->
+Flight.query.filter(or_(Flight.origin == "Paris", Flight.duration > 500)).all()
+
+SELECT * FROM flights JOIN passengers ON flights.id = passengers.flight_id -->
+db.session.query(Flight, Passenger).filter(Flight.id == Passenger.flight_id).all()
+
