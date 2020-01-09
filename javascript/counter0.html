@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>Mw Website</title>
+    <script>
+        let counter = 0;
+        function hello() {
+            counter++;
+            document.querySelector('#counter').innerHTML = counter;
+        }
+    </script>
+</head>
+<body>
+    <h1 id="counter">0</h1>
+    <button onclick="hello()">Click Here!</button>
+</body>
+</html>
