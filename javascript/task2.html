@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             
+            // By default, submit button is diabled
+            document.querySelector('#submit').disabled = true;
+
+            // Enable button only if there is text in the input field
+            document.querySelector('#task').onkeyup = () => {
+                if (document.querySelector('#task').value.length > 0)
+                    document.querySelector('#submit').disabled = false;
+                else
+                    document.querySelector('#submit').disabled = true;
+            };
+
+            document.querySelector('#new-task').onsubmit = () => {
+               
+                // Create new item for list
+                const li = document.createElement('li');
+                li.innerHTML = document.querySelector('#task').value;
+
+                // Add new item to the list
+                document.querySelector('#tasks').append(li);
+
+                // Clear the input field 
+                document.querySelector('#task').value= '';
+                document.querySelector('#submit').disabled = true;
+
+                // Stop form from submitting
+                return false;
+            } ;
+        } );
+    </script>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <ul id="tasks">        
+    </ul>
+    <form id="new-task">
+        <input id="task" type="text" autocomplete="off" autofocus placeholder="New Task">
+        <input id="submit" type="submit">
+    </form>
+    
+</body>
+</html>

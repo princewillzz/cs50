@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#new-task').onsubmit = () => {
+                // Create new item for list
+                const li = document.createElement('li');
+                li.innerHTML = document.querySelector('#task').value;
+
+                if (li.innerHTML == "") {
+                    return false;
+                }
+
+                // Add new item to the list
+                document.querySelector('#tasks').append(li);
+
+                // Clear the input field 
+                document.querySelector('#task').value= "";
+
+                // Stop form from submitting
+                return false;
+            } ;
+        } );
+    </script>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <ul id="tasks">        
+    </ul>
+    <form id="new-task">
+        <input id="task" type="text" autocomplete="off" autofocus placeholder="New Task">
+        <input type="submit">
+    </form>
+    
+</body>
+</html>
