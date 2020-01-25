@@ -9,8 +9,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Start loading first page 
             load_page('first');
-
-            // Set linls up to load new pages.
+                                                        
+            // Set links up to load new pages.
             document.querySelectorAll('.nav-link').forEach( link => {
                 link.onclick = () => {
                     load_page(link.dataset.page);
