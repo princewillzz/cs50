@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/x.y.z/handlebars.min.js"></script>
     <script>
         const template = Handlebars.compile("<li>You rolled a {{ value }}</li>");
+        // Inserting an image
+        //const template = Handlebars.compile("<li>You rolled: <img src=\"img/{{ Value }}.png\"> </li>");
         document.addEventListener('DOMContentLoaded', () =>{
             document.querySelector('#roll').oncllick = () =>{
 

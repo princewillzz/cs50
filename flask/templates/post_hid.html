@@ -6,15 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Post</title>
     <style>
+        @keyframes hid {
+            from {opacity: 1;}
+            to {opacity: 0;}
+        }
         .post {
             background-color: aquamarine;
             padding: 24px;
             margin: 10px;
+            animation-name: hid;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-play-state: paused;
         }
 
         .hide {
-            position: absolute;
-            right: 10%;
+            float: right;
         }
 
         body {
@@ -37,6 +44,16 @@
                 load();
             }
         };
+
+        document.addEventListener('click', event => {
+            const element = event.target;
+            if (element.className === 'hide') {
+                element.parentElement.style.animationPlayState = 'running';
+                element.parentElement.addEventListener('animationend', ()=> {
+                    element.parentElement.remove();
+                });
+            }
+        } );
 
         // Load next set of posts
         function load() {
@@ -76,9 +93,9 @@
             post.append(hide);
 
             // When hide button is clicked, remove post
-            hide.onclick = function() {
+            /*hide.onclick = function() {
                 this.parentElement.remove();
-            };
+            };*/
 
             // Add post to DOM
             document.querySelector('#posts').append(post);
